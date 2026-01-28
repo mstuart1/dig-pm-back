@@ -9,26 +9,26 @@ const prisma = new PrismaClient();
 
 async function main() {
 
-    await prisma.program.deleteMany({});
-    await prisma.people.deleteMany();
+    await prisma.project.deleteMany({});
+    await prisma.person.deleteMany();
     await prisma.effortEntry.deleteMany();
 
-    await prisma.people.createMany({
+    await prisma.person.createMany({
         data: [
             {
                 firstName: "Abigail",
                 lastName: "Cohen",
                 salary: 85000,
                 salaryEnteredDate: "2025-09-02",
-                program: "DIG-DEV"
-            },
+                program: "DIGDEV"
+            }
         ]
     });
 
-    await prisma.program.createMany({
+    await prisma.project.createMany({
         data: [
             {
-                program: "DIG-DEV",
+                program: "DIGDEV",
                 lastPiReportDate: "2025-12-04",
                 lastPiReportBalance: 80000.00,
                 title: "OEM - EAC",
@@ -40,8 +40,8 @@ async function main() {
                 fundingMechanism: "Contract",
                 status: "Funded",
                 projectAccount: "833872",
-                taskNumber: null,
-                indirectRate: 37.2
+                indirectRate: 37.25,
+                taskNumber: "",
             },
         ]
     });

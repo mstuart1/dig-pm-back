@@ -1,0 +1,726 @@
+2026-01-26	09:34:19	de92fad4-4ddf-4118-973a-052463a10a60	Error: Not allowed by CORS
+2026-01-26	09:34:19	ae724075-273e-4c7f-91a4-b3293a3ad32c	Error: Not allowed by CORS
+2026-01-26	09:34:19	c1e7445e-c0c1-4f61-bedf-83f7d661cb31	Error: Not allowed by CORS
+2026-01-26	09:56:24	d6d4323e-8b55-4b92-86e3-33fe3c794cdf	Error: Invalid or missing inputs provided for: taskNumber, indirectRate, effortEntries, softEndDate
+2026-01-26	09:58:21	d9cfa560-9b79-44a0-94fe-5952bbdd29da	Error: Invalid or missing inputs provided for: taskNumber, indirectRate, effortEntries
+2026-01-26	10:02:01	a920f710-a7c1-42a9-a556-6c4816d796af	Error: Invalid or missing inputs provided for: indirectRate, softEndDate
+2026-01-26	10:04:49	fc430e24-9b8a-4960-9fa6-d9aaac061a71	Error: Invalid or missing input provided for: indirectRate
+2026-01-26	10:05:21	38ea7048-1d24-4e35-9d9a-18093995ee81	Error: Invalid or missing input provided for: indirectRate
+2026-01-26	10:05:51	c0850cce-c788-4f9a-848d-aafb84b79768	Error: Invalid or missing input provided for: indirectRate
+2026-01-26	10:06:17	be858bc6-08d6-400b-b2dd-a2a2da998fac	PrismaClientValidationError: 
+Invalid `prisma.project.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/project/project.service.ts:8:31
+
+  5 };
+  6 
+  7 export const createProject = async (projectData: any) => {
+→ 8   return await prisma.project.create({
+        data: {
+          title: "WatershedNJ",
+          funder: "NJDEP",
+          pi: "Richard Lathrup",
+          programArea: "EAC-Policy",
+          fundingMechanism: "Contract",
+          status: "Funded",
+          projectAccount: "836704",
+          lastPiReportDate: "12/5/2025",
+          salaryBalance: "43201.18",
+          indirectRate: 10,
+          startDate: "1/1/2023",
+          endDate: "08/01/2026",
+          softEndDate: true,
+      +   program: Program
+        },
+        include: {
+          persons: true
+        }
+      })
+
+Argument `program` is missing.
+2026-01-26	10:06:56	10b8e9df-bf04-49f8-b125-dfe009c0d787	PrismaClientValidationError: 
+Invalid `prisma.project.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/project/project.service.ts:8:31
+
+  5 };
+  6 
+  7 export const createProject = async (projectData: any) => {
+→ 8   return await prisma.project.create({
+        data: {
+          title: "WatershedNJ",
+          funder: "NJDEP",
+          pi: "Richard Lathrup",
+          programArea: "EAC-Policy",
+          fundingMechanism: "Contract",
+          status: "Funded",
+          projectAccount: "836704",
+          lastPiReportDate: "12/5/2025",
+          salaryBalance: "43201.18",
+          indirectRate: 10,
+          startDate: "1/1/2023",
+          endDate: "08/01/2026",
+          softEndDate: true,
+          program: "EAC-Policy",
+          lastPiReportBalance: 43201.18,
+      +   taskNumber: String
+        },
+        include: {
+          persons: true
+        }
+      })
+
+Argument `taskNumber` is missing.
+2026-01-26	10:06:56	dbc397b1-e844-427c-ae5f-292d8cb95aa4	PrismaClientValidationError: 
+Invalid `prisma.project.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/project/project.service.ts:8:31
+
+  5 };
+  6 
+  7 export const createProject = async (projectData: any) => {
+→ 8   return await prisma.project.create({
+        data: {
+          title: "WatershedNJ",
+          funder: "NJDEP",
+          pi: "Richard Lathrup",
+          programArea: "EAC-Policy",
+          fundingMechanism: "Contract",
+          status: "Funded",
+          projectAccount: "836704",
+          lastPiReportDate: "12/5/2025",
+          salaryBalance: "43201.18",
+          indirectRate: 10,
+          startDate: "1/1/2023",
+          endDate: "08/01/2026",
+          softEndDate: true,
+          program: "EAC-Policy",
+          lastPiReportBalance: 43201.18,
+      +   taskNumber: String
+        },
+        include: {
+          persons: true
+        }
+      })
+
+Argument `taskNumber` is missing.
+2026-01-26	10:08:11	e416e4ad-6d92-445d-9e28-103934c3c6ab	PrismaClientValidationError: 
+Invalid `prisma.project.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/project/project.service.ts:8:31
+
+  5 };
+  6 
+  7 export const createProject = async (projectData: any) => {
+→ 8   return await prisma.project.create({
+        data: {
+          title: "WatershedNJ",
+          funder: "NJDEP",
+          pi: "Richard Lathrup",
+          programArea: "EAC-Policy",
+          ~~~~~~~~~~~
+          fundingMechanism: "Contract",
+          status: "Funded",
+          projectAccount: "836704",
+          taskNumber: "",
+          lastPiReportDate: "12/5/2025",
+          salaryBalance: "43201.18",
+          indirectRate: 10,
+          startDate: "01/01/2023",
+          endDate: "08/01/2026",
+          softEndDate: true,
+          program: "EAC-Policy",
+          lastPiReportBalance: 43201.18,
+      ?   id?: String,
+      ?   budget?: Float | Null,
+      ?   effortEntries?: EffortEntryCreateNestedManyWithoutProjectInput
+        },
+        include: {
+          persons: true
+        }
+      })
+
+Unknown argument `programArea`. Available options are marked with ?.
+2026-01-26	10:08:49	7bc57474-8cec-4766-b8e7-e677b979b4be	PrismaClientValidationError: 
+Invalid `prisma.project.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/project/project.service.ts:8:31
+
+  5 };
+  6 
+  7 export const createProject = async (projectData: any) => {
+→ 8   return await prisma.project.create({
+        data: {
+          title: "WatershedNJ",
+          funder: "NJDEP",
+          pi: "Richard Lathrup",
+          fundingMechanism: "Contract",
+          status: "Funded",
+          projectAccount: "836704",
+          taskNumber: "",
+          lastPiReportDate: "12/5/2025",
+          salaryBalance: "43201.18",
+          indirectRate: 10,
+          startDate: "01/01/2023",
+          endDate: "08/01/2026",
+          softEndDate: true,
+          lastPiReportBalance: 43201.18,
+      +   program: Program
+        },
+        include: {
+          persons: true
+        }
+      })
+
+Argument `program` is missing.
+2026-01-26	10:09:07	e8f00569-f702-4d42-89a8-cefa042873d3	PrismaClientValidationError: 
+Invalid `prisma.project.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/project/project.service.ts:8:31
+
+  5 };
+  6 
+  7 export const createProject = async (projectData: any) => {
+→ 8   return await prisma.project.create({
+        data: {
+          title: "WatershedNJ",
+          funder: "NJDEP",
+          pi: "Richard Lathrup",
+          program: "EAC-Policy",
+                   ~~~~~~~~~~~~
+          fundingMechanism: "Contract",
+          status: "Funded",
+          projectAccount: "836704",
+          taskNumber: "",
+          lastPiReportDate: "12/5/2025",
+          salaryBalance: "43201.18",
+          indirectRate: 10,
+          startDate: "01/01/2023",
+          endDate: "08/01/2026",
+          softEndDate: true,
+          lastPiReportBalance: 43201.18
+        },
+        include: {
+          persons: true
+        }
+      })
+
+Invalid value for argument `program`. Expected Program.
+2026-01-26	10:09:35	3cd2b43b-2f78-4875-b8d1-9006949253d9	PrismaClientValidationError: 
+Invalid `prisma.project.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/project/project.service.ts:8:31
+
+  5 };
+  6 
+  7 export const createProject = async (projectData: any) => {
+→ 8   return await prisma.project.create({
+        data: {
+          title: "WatershedNJ",
+          funder: "NJDEP",
+          pi: "Richard Lathrup",
+          program: "EACPOLICY",
+          fundingMechanism: "Contract",
+          status: "Funded",
+          projectAccount: "836704",
+          taskNumber: "",
+          lastPiReportDate: "12/5/2025",
+          salaryBalance: "43201.18",
+          ~~~~~~~~~~~~~
+          indirectRate: 10,
+          startDate: "01/01/2023",
+          endDate: "08/01/2026",
+          softEndDate: true,
+          lastPiReportBalance: 43201.18,
+      ?   id?: String,
+      ?   budget?: Float | Null,
+      ?   effortEntries?: EffortEntryCreateNestedManyWithoutProjectInput
+        },
+        include: {
+          persons: true
+        }
+      })
+
+Unknown argument `salaryBalance`. Available options are marked with ?.
+2026-01-26	10:09:52	df4de27e-287a-4ad2-b54a-f11d989bb179	Error: Invalid or missing input provided for: lastPiReportBalance
+2026-01-26	10:10:37	2f0055ec-c292-4f3b-b007-66a2aee76bd3	Error: Invalid or missing input provided for: lastPiReportBalance
+2026-01-26	10:10:55	e0148c1f-15b2-44f1-8dba-1c11edb79118	Error: Invalid or missing input provided for: lastPiReportBalance
+2026-01-26	10:11:14	be04d91a-d37a-4c65-b673-2e8632935b45	Error: Invalid or missing inputs provided for: lastPiReportBalance, indirectRate
+2026-01-26	10:11:34	ca0ed664-4346-4cca-ad47-c7e0e8a46665	PrismaClientValidationError: 
+Invalid `prisma.project.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/project/project.service.ts:8:31
+
+  5 };
+  6 
+  7 export const createProject = async (projectData: any) => {
+→ 8   return await prisma.project.create({
+        data: {
+          title: "WatershedNJ",
+          funder: "NJDEP",
+          pi: "Richard Lathrup",
+          program: "EACPOLICY",
+          fundingMechanism: "Contract",
+          status: "Funded",
+          projectAccount: "836704",
+          taskNumber: "",
+          lastPiReportDate: "12/5/2025",
+          lastPiReportBalance: 43201.18,
+          indirectRate: 10,
+          startDate: "01/01/2023",
+          endDate: "08/01/2026",
+          softEndDate: true
+        },
+        include: {
+          persons: true,
+          ~~~~~~~
+      ?   effortEntries?: true
+        }
+      })
+
+Unknown field `persons` for include statement on model `Project`. Available options are marked with ?.
+2026-01-26	10:12:43	eaaf289a-c9e4-44fe-b2c2-76ae49583537	PrismaClientValidationError: 
+Invalid `prisma.project.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/project/project.service.ts:8:31
+
+  5 };
+  6 
+  7 export const createProject = async (projectData: any) => {
+→ 8   return await prisma.project.create({
+        data: {
+          title: "WatershedNJ",
+          funder: "NJDEP",
+          pi: "Richard Lathrup",
+          program: "EACPOLICY",
+          fundingMechanism: "Contract",
+          status: "Funded",
+          projectAccount: "836704",
+          taskNumber: "",
+          lastPiReportDate: "12/5/2025",
+          lastPiReportBalance: 43201.18,
+          indirectRate: 10,
+          startDate: "01/01/2023",
+          endDate: "08/01/2026",
+          softEndDate: true
+        },
+        include: {
+          persons: true,
+          ~~~~~~~
+      ?   effortEntries?: true
+        }
+      })
+
+Unknown field `persons` for include statement on model `Project`. Available options are marked with ?.
+2026-01-26	10:12:51	283bf323-dfa0-4f14-ab00-869649ad0812	PrismaClientValidationError: 
+Invalid `prisma.project.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/project/project.service.ts:8:31
+
+  5 };
+  6 
+  7 export const createProject = async (projectData: any) => {
+→ 8   return await prisma.project.create({
+        data: {
+          title: "WatershedNJ",
+          funder: "NJDEP",
+          pi: "Richard Lathrup",
+          program: "EACPOLICY",
+          fundingMechanism: "Contract",
+          status: "Funded",
+          projectAccount: "836704",
+          taskNumber: "",
+          lastPiReportDate: "12/5/2025",
+          lastPiReportBalance: 43201.18,
+          indirectRate: 10,
+          startDate: "01/01/2023",
+          endDate: "08/01/2026",
+          softEndDate: true
+        },
+        include: {
+          persons: true,
+          ~~~~~~~
+      ?   effortEntries?: true
+        }
+      })
+
+Unknown field `persons` for include statement on model `Project`. Available options are marked with ?.
+2026-01-26	10:13:45	9b95b648-1660-462b-8257-28dfe0078a13	PrismaClientValidationError: 
+Invalid `prisma.project.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/project/project.service.ts:8:31
+
+  5 };
+  6 
+  7 export const createProject = async (projectData: any) => {
+→ 8   return await prisma.project.create({
+        data: {
+          title: "WatershedNJ",
+          funder: "NJDEP",
+          pi: "Richard Lathrup",
+          program: "EAC-Policy",
+                   ~~~~~~~~~~~~
+          fundingMechanism: "Contract",
+          status: "Funded",
+          projectAccount: "836704",
+          taskNumber: "",
+          lastPiReportDate: "12/5/2025",
+          lastPiReportBalance: 43201.18,
+          indirectRate: 10,
+          startDate: "01/01/2023",
+          endDate: "08/01/2026",
+          softEndDate: true
+        }
+      })
+
+Invalid value for argument `program`. Expected Program.
+2026-01-26	12:11:07	94c4aa52-57f5-4f67-ae79-938a72410ebe	Error: Invalid or missing input provided for: salary
+2026-01-28	09:06:31	6c7aa6d2-4ecd-4d89-b212-502f71196528	Error: Invalid or missing inputs provided for: payrollDate, employeeId, projectId
+2026-01-28	09:06:31	9542940a-68c9-4b54-b62e-3b5b8f262555	Error: Invalid or missing inputs provided for: payrollDate, employeeId, projectId
+2026-01-28	09:06:31	20fae0ca-f73a-41a7-b9ff-70fe515e61ae	Error: Invalid or missing inputs provided for: payrollDate, employeeId, projectId
+2026-01-28	09:06:31	e4e97e56-5f0c-492e-9c25-b7bdfd6e79bf	Error: Invalid or missing inputs provided for: payrollDate, employeeId, projectId
+2026-01-28	09:06:31	cc4e11f7-838f-4fca-a7f4-01a0aff99dc6	Error: Invalid or missing inputs provided for: payrollDate, employeeId, projectId
+2026-01-28	09:06:31	42635eea-1101-440f-84ac-d25c77b15afd	Error: Invalid or missing inputs provided for: payrollDate, employeeId, projectId
+2026-01-28	09:06:32	db66793c-ce3d-4ff9-8464-f4c5c866754d	Error: Invalid or missing inputs provided for: payrollDate, employeeId, projectId
+2026-01-28	09:06:32	4cdf3d70-1f20-4fdc-b715-6c244ef41336	Error: Invalid or missing inputs provided for: payrollDate, employeeId, projectId
+2026-01-28	09:06:32	c3235519-798c-4926-847d-0bac0567ca67	Error: Invalid or missing inputs provided for: payrollDate, employeeId, projectId
+2026-01-28	09:06:32	32dc111e-3b18-4587-b155-d13db6ac3497	Error: Invalid or missing inputs provided for: payrollDate, employeeId, projectId
+2026-01-28	09:06:32	d71013d8-9ecd-48a3-87ac-e27e5b57fa00	Error: Invalid or missing inputs provided for: payrollDate, employeeId, projectId
+2026-01-28	09:06:32	6af680da-8f5d-4d93-83a4-88320d8f5b6b	Error: Invalid or missing inputs provided for: payrollDate, employeeId, projectId
+2026-01-28	09:06:32	c386df23-3d5b-4341-980d-359e514f88f3	Error: Invalid or missing inputs provided for: payrollDate, employeeId, projectId
+2026-01-28	09:06:32	3f8d0839-f38b-493a-b2e6-58fba0f56c98	Error: Invalid or missing inputs provided for: payrollDate, employeeId, projectId
+2026-01-28	09:06:32	a1c34049-73e9-4eb3-9aa9-0a5f1e26ce22	Error: Invalid or missing inputs provided for: payrollDate, employeeId, projectId
+2026-01-28	09:06:44	3a39acb5-21da-4ff5-8c30-dfc63eb248ea	Error: Invalid or missing inputs provided for: employeeId, projectId
+2026-01-28	09:06:44	6ff5be89-2572-485d-b17a-58aefd2e57d2	Error: Invalid or missing inputs provided for: employeeId, projectId
+2026-01-28	09:06:44	b2a33e8e-2fa8-4d87-8b62-cc3f3b3690f4	Error: Invalid or missing inputs provided for: employeeId, projectId
+2026-01-28	09:06:44	9b778e78-9678-4a9e-9922-cd12bbcaf261	Error: Invalid or missing inputs provided for: employeeId, projectId
+2026-01-28	09:06:44	e3f6ef68-ae3f-4531-bc17-5b27f71ce31a	Error: Invalid or missing inputs provided for: employeeId, projectId
+2026-01-28	09:06:44	b91127b6-b3fd-4d0d-a82c-4baa1b79d0a6	Error: Invalid or missing inputs provided for: employeeId, projectId
+2026-01-28	09:06:44	1f937cce-19c0-4300-ad96-4cee614fca7e	Error: Invalid or missing inputs provided for: employeeId, projectId
+2026-01-28	09:06:44	1b1136a3-cbb2-40d9-a82c-fe094af40ab1	Error: Invalid or missing inputs provided for: employeeId, projectId
+2026-01-28	09:06:44	3676eb0a-e65f-4237-8dbb-ffc8cc98bab7	Error: Invalid or missing inputs provided for: employeeId, projectId
+2026-01-28	09:06:44	208f64ae-fd66-404c-9a00-647943d9842b	Error: Invalid or missing inputs provided for: employeeId, projectId
+2026-01-28	09:06:44	bba983a1-16cb-410b-90f2-117d053403c0	Error: Invalid or missing inputs provided for: employeeId, projectId
+2026-01-28	09:06:44	9062bb65-dc7c-4bb3-b366-3fd347b1eb71	Error: Invalid or missing inputs provided for: employeeId, projectId
+2026-01-28	09:06:44	f5ca2502-51fb-4c3b-84dd-f8017f240053	Error: Invalid or missing inputs provided for: employeeId, projectId
+2026-01-28	09:06:44	7c3ad045-9de8-472b-8da4-e1739b8f4074	Error: Invalid or missing inputs provided for: employeeId, projectId
+2026-01-28	09:06:44	31b8b73d-7dae-49e2-8c5c-6ebd4d45f47a	Error: Invalid or missing inputs provided for: employeeId, projectId
+2026-01-28	09:07:06	11a46756-4c44-4cdf-8c70-0108a9d52202	PrismaClientValidationError: 
+Invalid `prisma.effort.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/effort/effort.service.ts:11:30
+
+   8 };
+   9 
+  10 export const createEffort = async (effortData: any) => {
+→ 11   return await prisma.effort.create({
+         data: {
+           employeeId: "87790c9c-017c-4292-bd24-871400f8316a",
+           projectId: "4014febb-77a8-4245-a5cd-88ec824d4109",
+           percentEffort: 0.37615463707648245,
+           payrollDate: "2026-01-16",
+       +   effortStartDate: String
+         },
+         include: {
+           project: true,
+           employee: true
+         }
+       })
+
+Argument `effortStartDate` is missing.
+2026-01-28	09:07:06	82cbcce7-b33e-47da-92d2-ddb5cd092132	PrismaClientValidationError: 
+Invalid `prisma.effort.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/effort/effort.service.ts:11:30
+
+   8 };
+   9 
+  10 export const createEffort = async (effortData: any) => {
+→ 11   return await prisma.effort.create({
+         data: {
+           employeeId: "87790c9c-017c-4292-bd24-871400f8316a",
+           projectId: "4014febb-77a8-4245-a5cd-88ec824d4109",
+           percentEffort: 0.37615463707648245,
+           payrollDate: "2026-04-09",
+       +   effortStartDate: String
+         },
+         include: {
+           project: true,
+           employee: true
+         }
+       })
+
+Argument `effortStartDate` is missing.
+2026-01-28	09:07:06	72beccc8-15bb-4608-8487-729b44630fb0	PrismaClientValidationError: 
+Invalid `prisma.effort.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/effort/effort.service.ts:11:30
+
+   8 };
+   9 
+  10 export const createEffort = async (effortData: any) => {
+→ 11   return await prisma.effort.create({
+         data: {
+           employeeId: "87790c9c-017c-4292-bd24-871400f8316a",
+           projectId: "4014febb-77a8-4245-a5cd-88ec824d4109",
+           percentEffort: 0.37615463707648245,
+           payrollDate: "2026-03-12",
+       +   effortStartDate: String
+         },
+         include: {
+           project: true,
+           employee: true
+         }
+       })
+
+Argument `effortStartDate` is missing.
+2026-01-28	09:07:06	b57c798c-8854-42ea-b89a-af1853223ab5	PrismaClientValidationError: 
+Invalid `prisma.effort.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/effort/effort.service.ts:11:30
+
+   8 };
+   9 
+  10 export const createEffort = async (effortData: any) => {
+→ 11   return await prisma.effort.create({
+         data: {
+           employeeId: "87790c9c-017c-4292-bd24-871400f8316a",
+           projectId: "4014febb-77a8-4245-a5cd-88ec824d4109",
+           percentEffort: 0.37615463707648245,
+           payrollDate: "2026-02-27",
+       +   effortStartDate: String
+         },
+         include: {
+           project: true,
+           employee: true
+         }
+       })
+
+Argument `effortStartDate` is missing.
+2026-01-28	09:07:06	601d76ea-d1e9-44cc-81a3-27d65c539c05	PrismaClientValidationError: 
+Invalid `prisma.effort.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/effort/effort.service.ts:11:30
+
+   8 };
+   9 
+  10 export const createEffort = async (effortData: any) => {
+→ 11   return await prisma.effort.create({
+         data: {
+           employeeId: "87790c9c-017c-4292-bd24-871400f8316a",
+           projectId: "4014febb-77a8-4245-a5cd-88ec824d4109",
+           percentEffort: 0.37615463707648245,
+           payrollDate: "2026-01-30",
+       +   effortStartDate: String
+         },
+         include: {
+           project: true,
+           employee: true
+         }
+       })
+
+Argument `effortStartDate` is missing.
+2026-01-28	09:07:06	97b31d28-5d99-41f8-bf53-62182dd94aa6	PrismaClientValidationError: 
+Invalid `prisma.effort.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/effort/effort.service.ts:11:30
+
+   8 };
+   9 
+  10 export const createEffort = async (effortData: any) => {
+→ 11   return await prisma.effort.create({
+         data: {
+           employeeId: "87790c9c-017c-4292-bd24-871400f8316a",
+           projectId: "4014febb-77a8-4245-a5cd-88ec824d4109",
+           percentEffort: 0.37615463707648245,
+           payrollDate: "2026-03-26",
+       +   effortStartDate: String
+         },
+         include: {
+           project: true,
+           employee: true
+         }
+       })
+
+Argument `effortStartDate` is missing.
+2026-01-28	09:07:06	39e9141a-86a1-40c6-9879-ead143a64921	PrismaClientValidationError: 
+Invalid `prisma.effort.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/effort/effort.service.ts:11:30
+
+   8 };
+   9 
+  10 export const createEffort = async (effortData: any) => {
+→ 11   return await prisma.effort.create({
+         data: {
+           employeeId: "87790c9c-017c-4292-bd24-871400f8316a",
+           projectId: "4014febb-77a8-4245-a5cd-88ec824d4109",
+           percentEffort: 0.37615463707648245,
+           payrollDate: "2026-02-13",
+       +   effortStartDate: String
+         },
+         include: {
+           project: true,
+           employee: true
+         }
+       })
+
+Argument `effortStartDate` is missing.
+2026-01-28	09:07:06	6a934a17-7445-444c-b3c6-792ff5e42cb6	PrismaClientValidationError: 
+Invalid `prisma.effort.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/effort/effort.service.ts:11:30
+
+   8 };
+   9 
+  10 export const createEffort = async (effortData: any) => {
+→ 11   return await prisma.effort.create({
+         data: {
+           employeeId: "87790c9c-017c-4292-bd24-871400f8316a",
+           projectId: "4014febb-77a8-4245-a5cd-88ec824d4109",
+           percentEffort: 0.37615463707648245,
+           payrollDate: "2026-04-23",
+       +   effortStartDate: String
+         },
+         include: {
+           project: true,
+           employee: true
+         }
+       })
+
+Argument `effortStartDate` is missing.
+2026-01-28	09:07:06	9eee3bec-0f9d-4611-ba09-517dec6932b8	PrismaClientValidationError: 
+Invalid `prisma.effort.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/effort/effort.service.ts:11:30
+
+   8 };
+   9 
+  10 export const createEffort = async (effortData: any) => {
+→ 11   return await prisma.effort.create({
+         data: {
+           employeeId: "87790c9c-017c-4292-bd24-871400f8316a",
+           projectId: "4014febb-77a8-4245-a5cd-88ec824d4109",
+           percentEffort: 0.37615463707648245,
+           payrollDate: "2026-05-21",
+       +   effortStartDate: String
+         },
+         include: {
+           project: true,
+           employee: true
+         }
+       })
+
+Argument `effortStartDate` is missing.
+2026-01-28	09:07:06	f0170c7b-fd57-4305-a616-12a1945d9b2b	PrismaClientValidationError: 
+Invalid `prisma.effort.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/effort/effort.service.ts:11:30
+
+   8 };
+   9 
+  10 export const createEffort = async (effortData: any) => {
+→ 11   return await prisma.effort.create({
+         data: {
+           employeeId: "87790c9c-017c-4292-bd24-871400f8316a",
+           projectId: "4014febb-77a8-4245-a5cd-88ec824d4109",
+           percentEffort: 0.37615463707648245,
+           payrollDate: "2026-05-07",
+       +   effortStartDate: String
+         },
+         include: {
+           project: true,
+           employee: true
+         }
+       })
+
+Argument `effortStartDate` is missing.
+2026-01-28	09:07:06	bdb0d07e-e85f-45ca-9982-63530aa92c93	PrismaClientValidationError: 
+Invalid `prisma.effort.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/effort/effort.service.ts:11:30
+
+   8 };
+   9 
+  10 export const createEffort = async (effortData: any) => {
+→ 11   return await prisma.effort.create({
+         data: {
+           employeeId: "87790c9c-017c-4292-bd24-871400f8316a",
+           projectId: "4014febb-77a8-4245-a5cd-88ec824d4109",
+           percentEffort: 0.37615463707648245,
+           payrollDate: "2026-06-04",
+       +   effortStartDate: String
+         },
+         include: {
+           project: true,
+           employee: true
+         }
+       })
+
+Argument `effortStartDate` is missing.
+2026-01-28	09:07:06	a04a0a7a-b94d-4546-ade9-ed801df1ae70	PrismaClientValidationError: 
+Invalid `prisma.effort.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/effort/effort.service.ts:11:30
+
+   8 };
+   9 
+  10 export const createEffort = async (effortData: any) => {
+→ 11   return await prisma.effort.create({
+         data: {
+           employeeId: "87790c9c-017c-4292-bd24-871400f8316a",
+           projectId: "4014febb-77a8-4245-a5cd-88ec824d4109",
+           percentEffort: 0.37615463707648245,
+           payrollDate: "2026-06-18",
+       +   effortStartDate: String
+         },
+         include: {
+           project: true,
+           employee: true
+         }
+       })
+
+Argument `effortStartDate` is missing.
+2026-01-28	09:07:06	63461811-cfb5-4925-8d2d-1ed45110eac9	PrismaClientValidationError: 
+Invalid `prisma.effort.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/effort/effort.service.ts:11:30
+
+   8 };
+   9 
+  10 export const createEffort = async (effortData: any) => {
+→ 11   return await prisma.effort.create({
+         data: {
+           employeeId: "87790c9c-017c-4292-bd24-871400f8316a",
+           projectId: "4014febb-77a8-4245-a5cd-88ec824d4109",
+           percentEffort: 0.37615463707648245,
+           payrollDate: "2026-07-02",
+       +   effortStartDate: String
+         },
+         include: {
+           project: true,
+           employee: true
+         }
+       })
+
+Argument `effortStartDate` is missing.
+2026-01-28	09:07:06	d3f31763-9291-4681-8741-a7e3f7b6afde	PrismaClientValidationError: 
+Invalid `prisma.effort.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/effort/effort.service.ts:11:30
+
+   8 };
+   9 
+  10 export const createEffort = async (effortData: any) => {
+→ 11   return await prisma.effort.create({
+         data: {
+           employeeId: "87790c9c-017c-4292-bd24-871400f8316a",
+           projectId: "4014febb-77a8-4245-a5cd-88ec824d4109",
+           percentEffort: 0.37615463707648245,
+           payrollDate: "2026-07-16",
+       +   effortStartDate: String
+         },
+         include: {
+           project: true,
+           employee: true
+         }
+       })
+
+Argument `effortStartDate` is missing.
+2026-01-28	09:07:06	6ed64ae7-45fc-4396-a69d-aa01d67c0818	PrismaClientValidationError: 
+Invalid `prisma.effort.create()` invocation in
+/home/mrs349/projects/dig-project-mgt/dig-pm-back/src/effort/effort.service.ts:11:30
+
+   8 };
+   9 
+  10 export const createEffort = async (effortData: any) => {
+→ 11   return await prisma.effort.create({
+         data: {
+           employeeId: "87790c9c-017c-4292-bd24-871400f8316a",
+           projectId: "4014febb-77a8-4245-a5cd-88ec824d4109",
+           percentEffort: 0.37615463707648245,
+           payrollDate: "2026-07-30",
+       +   effortStartDate: String
+         },
+         include: {
+           project: true,
+           employee: true
+         }
+       })
+
+Argument `effortStartDate` is missing.

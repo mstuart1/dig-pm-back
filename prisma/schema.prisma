@@ -1,5 +1,5 @@
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -8,44 +8,51 @@ datasource db {
 }
 
 model Project {
-  id             String   @unique  @default(uuid())
-    program Program
-    lastPiReportDate String?
-    lastPiReportBalance Float?
-    title String
-    budget Float?
-    startDate String
-    endDate String
-    funder String
-    pi String
-    fundingMechanism String // do we want to make this an enum?
-    status String // do we want to make this an enum?
-    projectAccount String
-    taskNumber String
-    indirectRate Float?    
-    effortEntries EffortEntry[]
-    softEndDate Boolean @default(false) // indicates if the end date is flexible and can be extended
+  id                  String  @id @unique @default(uuid())
+  lastPiReportDate    String?
+  lastPiReportBalance Float?
+  title               String
+  budget              Float?
+  startDate           String
+  endDate             String
+  funder              String
+  pi                  String
+  fundingMechanism    String // do we want to make this an enum?
+  status              String // do we want to make this an enum?
+  projectAccount      String
+  taskNumber          String
+  indirectRate        Float?
+  softEndDate         Boolean @default(false) // indicates if the end date is flexible and can be extended
+  program             Program
+
+  // Relationships
+  efforts Effort[]
+  persons Person[]
 }
 
 model Person {
-  id        String @unique  @default(uuid())
-  firstName String
-  lastName  String
-  salary    Int
+  id                String  @id @unique @default(uuid())
+  firstName         String
+  lastName          String
+  salary            Int
   salaryEnteredDate String
-  program   Program
-  effortEntries EffortEntry[]
+  program           Program
+
+  // Relationships
+  efforts  Effort[]
+  projects Project[]
 }
 
-model EffortEntry {
-    id             String   @unique  @default(uuid())
-  employee Person @relation(fields: [employeeId], references: [id])
+model Effort {
+  id              String @id @unique @default(uuid())
+  payrollDate   String
+  percentEffort   Int?
+
+  // Relationships
+  employee   Person  @relation(fields: [employeeId], references: [id])
   employeeId String
-  project Project @relation(fields: [projectId], references: [id])
+  project    Project @relation(fields: [projectId], references: [id])
   projectId  String
-  effortStartDate String
-  effortEndDate String
-  percentEffort Int?
 }
 
 enum Program {
