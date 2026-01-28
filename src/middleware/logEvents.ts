@@ -31,7 +31,8 @@ const logEvents = async (message: string, logName: string) => {
 
 export const logger = (req:any, res:any, next:any) => {
   logEvents(`${req.method}\t${req.headers.origin}\t${req.url}`, 'request.log');
-  // console.log('Checking authentication for request:', req.method, req.path);
+  console.log(`${req.method} ${req.url}`);
+  console.log('response:', res.statusCode);
   next();
 }
 

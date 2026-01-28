@@ -46,7 +46,7 @@ model Person {
 model Effort {
   id              String @id @unique @default(uuid())
   payrollDate   String
-  percentEffort   Int?
+  percentEffort   Float?
 
   // Relationships
   employee   Person  @relation(fields: [employeeId], references: [id])

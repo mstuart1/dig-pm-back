@@ -17,9 +17,15 @@ export const getProjectById: RequestHandler<{ projectId: string }> = async (req,
 }
 
 export const createProject: RequestHandler<{}, {}, CreateSchema> = async (req, res) => {
-  const projectData = req.body
-  const newProject = await ProjectService.createProject(projectData)
-  res.status(201).json(newProject)
+  try {
+    console.log('createProject controller - body:', req.body)
+    const projectData = req.body
+    const newProject = await ProjectService.createProject(projectData)
+    res.status(201).json(newProject)
+  } catch (error) {
+    console.log('Error in createProject controller:', error)
+    res.status(500).json({ message: 'Failed to create project', error: (error as Error).message })
+  }
 }
 
 export const updateProject: RequestHandler<{}, {}, UpdateSchema> = async (req, res) => {

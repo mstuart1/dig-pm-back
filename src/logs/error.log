@@ -724,3 +724,31 @@ Invalid `prisma.effort.create()` invocation in
        })
 
 Argument `effortStartDate` is missing.
+2026-01-28	11:41:56	33eb5359-0b81-4312-ae1a-38f0660ed414	Error: Invalid or missing input provided for: percentEffort
+2026-01-28	11:41:56	c03ac160-f2dc-4da2-9b0d-a4532e51f811	Error: Invalid or missing input provided for: percentEffort
+2026-01-28	11:41:56	09689a0b-7e3e-43cd-af6d-555453e7d670	Error: Invalid or missing input provided for: percentEffort
+2026-01-28	11:41:56	48a2e425-4b85-4101-8723-0520e57d2bc2	Error: Invalid or missing input provided for: percentEffort
+2026-01-28	11:41:56	dddd556f-e810-48ff-aaa3-b85ca80897e5	Error: Invalid or missing input provided for: percentEffort
+2026-01-28	11:41:56	d2524d84-2947-4a43-a625-53c7f310d3d2	Error: Invalid or missing input provided for: percentEffort
+2026-01-28	11:41:56	52e2a318-2cef-467e-a93f-af1f83f88006	Error: Invalid or missing input provided for: percentEffort
+2026-01-28	11:41:56	c00d6d4f-5762-4b0b-b07f-c1460d50d0c7	Error: Invalid or missing input provided for: percentEffort
+2026-01-28	11:41:56	2007657f-b6a5-41c1-926f-321d4bfd1d67	Error: Invalid or missing input provided for: percentEffort
+2026-01-28	11:41:56	cc87062d-9c67-460c-8476-cdd33fdf52b7	Error: Invalid or missing input provided for: percentEffort
+2026-01-28	11:41:56	98d4f283-6828-4bd9-b784-200e2f9b5640	Error: Invalid or missing input provided for: percentEffort
+2026-01-28	11:41:56	c896fb3b-d274-445f-9fe5-cb716d2602e7	Error: Invalid or missing input provided for: percentEffort
+2026-01-28	11:41:56	8a56a343-a27c-49b8-9ef1-6c7c9b72c839	Error: Invalid or missing input provided for: percentEffort
+2026-01-28	11:41:56	dca3cab4-9fbb-4e11-bf8e-d4b5db3f2c7b	Error: Invalid or missing input provided for: percentEffort
+2026-01-28	13:15:09	3628142d-f802-4020-9c20-cf4d392ec29c	Error: Invalid or missing input provided for: indirectRate
+2026-01-28	14:38:44	0f4323a2-6ec6-422b-9b29-4fab9e814368	Error: Invalid or missing inputs provided for: lastPiReportBalance, indirectRate
+2026-01-28	14:42:15	aae66e5f-64f3-43fc-864e-5f4846c8058c	Error: Invalid or missing inputs provided for: lastPiReportBalance, indirectRate
+2026-01-28	14:45:38	2be171d0-0a7d-48d4-a7be-4cfa9803d865	Error: Invalid or missing inputs provided for: lastPiReportBalance, indirectRate
+2026-01-28	14:49:18	6a60498a-be83-4411-b55c-63694310b570	Error: Invalid or missing inputs provided for: lastPiReportBalance, indirectRate
+2026-01-28	14:52:36	7455ee8d-66a5-41b9-b6e6-918445120154	Error: Invalid or missing inputs provided for: lastPiReportBalance, indirectRate
+2026-01-28	14:53:15	d3b8d0e7-c121-47aa-9e28-09cebef2468d	Error: Invalid or missing inputs provided for: lastPiReportBalance, indirectRate
+2026-01-28	14:55:37	a1824245-9089-4fd7-a523-2c7c7dfa276d	Error: Invalid or missing inputs provided for: lastPiReportBalance, indirectRate
+2026-01-28	14:56:45	73305284-2ba0-4f0f-a010-c04faa68fdd9	Error: Invalid or missing inputs provided for: lastPiReportBalance, indirectRate
+2026-01-28	14:58:33	2898129e-dfb0-4442-b287-a0b565ef019a	Error: Invalid or missing inputs provided for: lastPiReportBalance, indirectRate
+2026-01-28	14:59:24	43dec73b-8d5c-44d8-8ebf-0abaf9b20e00	Error: Invalid or missing inputs provided for: lastPiReportBalance, indirectRate
+2026-01-28	15:12:14	5b75829f-5924-4290-8a31-4c0caddf6216	Error: Invalid or missing input provided for: lastPiReportBalance
+2026-01-28	15:14:12	204246e8-aa68-4d0c-9d73-47d529feb1aa	Error: Invalid or missing input provided for: indirectRate
+2026-01-28	15:30:01	58bfcd4f-1433-485a-a5b3-d88d70108f6b	Error: Invalid or missing input provided for: effortEntries

@@ -15,6 +15,8 @@ const validateSchema = (schema: ZodObject) =>
     } catch (error) {
       if (error instanceof ZodError) {
         const invalids = error.issues.map(issue => issue.path.pop())
+        console.log('Validation error:', error.issues)
+        console.log('Invalid fields:', invalids)
         next(
           new AppError(
             'validation',
@@ -24,6 +26,7 @@ const validateSchema = (schema: ZodObject) =>
           )
         )
       } else {
+        console.log('Unknown validation error:', error)
         next(new AppError('validation', 'Invalid input'))
       }
     }

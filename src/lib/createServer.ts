@@ -33,6 +33,16 @@ const corsOptions = {
   credentials: true, // allow cookies to be sent with requests
 }
 
+// Middleware to handle Private Network Access (for HTTPS->localhost requests)
+app.use((req, res, next) => {
+  // Handle preflight requests for Private Network Access
+  if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Private-Network', 'true');
+  }
+  res.setHeader('Access-Control-Allow-Private-Network', 'true');
+  next();
+});
+
 // custom middleware to check if the user is authenticated
 app.use(logger)
 

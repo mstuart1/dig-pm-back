@@ -7,15 +7,21 @@ export const getAllProjects = async () => {
 export const getProjectById = async (projectId: string) => {
   return await prisma.project.findUnique({
     where: { id: projectId },
-    include: {persons: true},
+    include: {persons: {include: {efforts: true}} },
   });
 };
 
 export const createProject = async (projectData: any) => {
-  return await prisma.project.create({
-    data: projectData,
-    include: {persons: true},
-  });
+  console.log('Creating project with data:', projectData);
+  try {
+
+    return await prisma.project.create({
+      data: projectData,
+      include: {persons: true},
+    });
+  } catch (error) {
+    throw new Error('Error creating project: ' + (error as Error).message); 
+  }
 };
 
 export const updateProject = async (projectId: string, projectData: any) => {
