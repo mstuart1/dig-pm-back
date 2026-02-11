@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: dig-pm-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpassword}
+      MYSQL_DATABASE: ${DB_NAME:-dig_pm}
+      MYSQL_USER: ${DB_USER:-diguser}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-digpassword}
+    ports:
+      - "${DB_PORT:-3306}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - dig-pm-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_ROOT_PASSWORD:-rootpassword}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dig-pm-app
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: mysql://${DB_USER:-diguser}:${DB_PASSWORD:-digpassword}@db:3306/${DB_NAME:-dig_pm}
+      API_PORT: ${API_PORT:-3000}
+      NODE_ENV: ${NODE_ENV:-production}
+    ports:
+      - "${API_PORT:-3000}:${API_PORT:-3000}"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - dig-pm-network
+    volumes:
+      - ./src/logs:/app/src/logs
+
+volumes:
+  mysql_data:
+
+networks:
+  dig-pm-network:
+    driver: bridge
