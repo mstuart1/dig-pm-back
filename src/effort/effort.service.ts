@@ -14,6 +14,13 @@ export const createEffort = async (effortData: any) => {
   });
 };
 
+export const createBulkEffort = async (effortDataArray: any[]) => {
+  return await prisma.effort.createMany({
+    data: effortDataArray,
+    skipDuplicates: true, // Skip duplicates based on unique constraints
+  });
+};
+
 export const updateEffort = async (effortId: string, effortData: any) => {
   return await prisma.effort.update({
     where: { id: effortId },

@@ -9,6 +9,7 @@ import * as EffortController from './effort.controller.js'
 
     router.get('/person/:personId', EffortController.getEffortsByPersonId)
   .post('/', validateSchema(CreateSchema), EffortController.createEffort)
+  .post('/bulk', EffortController.createBulkEffort)
   .put('/', validateSchema(UpdateSchema), EffortController.updateEffort)
 
   
