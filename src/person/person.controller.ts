@@ -3,10 +3,22 @@ import * as PersonService from './person.service.js'
 import type { Request, RequestHandler } from 'express'
 
 export const getPersons: RequestHandler = async (req: Request, res) => {
-  const persons = await PersonService.getAllPersons()
-  res.status(200).json(persons)
-}   
+  let queryParams = req.query;
+  let query = {} as any;
+  let where = {}
+  let include = {efforts: {include: {project: true}}, projects: true}
+  if (queryParams.program) {
+    where = { program: queryParams.program }
+  }
+  
+    if (Object.keys(where).length > 0) query.where = where;
+    if (Object.keys(include).length > 0) query.include = include;
 
+  const persons = await PersonService.getAllPersons(query)
+  res.status(200).json(persons)
+}
+
+ 
 export const getPersonById: RequestHandler<{ personId: string }> = async (req, res) => {
   const { personId } = req.params
   const person = await PersonService.getPersonById(personId)

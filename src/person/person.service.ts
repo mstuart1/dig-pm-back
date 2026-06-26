@@ -1,12 +1,20 @@
 import prisma from "../lib/prisma.js";
 
-export const getAllPersons = async () => {
-  return await prisma.person.findMany();
+export const getAllPersons = async ( query: any) => {
+  return await prisma.person.findMany(query);
 };
 
 export const getPersonById = async (personId: string) => {
   return await prisma.person.findUnique({
     where: { id: personId },
+    include: {
+      efforts: {
+        include: {
+          project: true
+        }
+      },
+      projects: true
+    }
   });
 };
 
