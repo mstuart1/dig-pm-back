@@ -5,5 +5,6 @@ const whitelist = [
     'http://localhost:41006',
     'http://localhost:3000',
     'https://dev-tessera.rutgers.edu',
+    'https://dig-pm.apps.ocp.ei.rutgers.edu'
 ]
 export default whitelist;
