@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction } from 'express';
-import logEvents from './logEvents.js'
+// import logEvents from './logEvents.js'
 
 
 export class AppError extends Error {
@@ -27,7 +27,7 @@ const errorHandler = (
   response: Response,
   _next: NextFunction // eslint-disable-line no-unused-vars
 ) => {
-    logEvents(`${error.name}: ${error.message}`, 'error.log');
+    // logEvents(`${error.name}: ${error.message}`, 'error.log');
   response
     .status(error.statusCode || 500)
     .json({

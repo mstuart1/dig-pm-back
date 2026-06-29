@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv';
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import whitelist from './whitelist.js';
-import {logger} from '../middleware/logEvents.js';
+// import {logger} from '../middleware/logEvents.js';
 import errorHandler from '../middleware/errorHandler.js';
 import projectRouter from '../project/project.router.js';
 import personRouter from '../person/person.router.js';
@@ -44,7 +44,7 @@ app.use((req, res, next) => {
 });
 
 // custom middleware to check if the user is authenticated
-app.use(logger)
+// app.use(logger)
 
 app.use(cors(corsOptions))
 app.use(cookieParser()) // required for cookie handling in auth
