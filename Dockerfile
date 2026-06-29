@@ -1,39 +1,40 @@
-FROM node:20-alpine AS build
-
-# Install OpenSSL for Prisma
-RUN apk add --no-cache openssl openssl-dev
+# Build stage
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
-RUN npm ci 
+# Copy package files
+COPY package*.json ./
 
-COPY prisma ./prisma/
+# Install all dependencies (including dev dependencies for build)
+RUN npm ci
+
+# Copy source files
+COPY . .
+
+# Generate Prisma Client
 RUN npx prisma generate
 
-COPY . .
-RUN npm run build
-
+# Production stage
 FROM node:20-alpine
 
-# Install OpenSSL for Prisma
-RUN apk add --no-cache openssl openssl-dev
-
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+# Copy package files
+COPY package*.json ./
+
+# Install only production dependencies
 RUN npm ci --omit=dev
 
-COPY prisma ./prisma/
-RUN npx prisma generate
+# Copy built artifacts from builder
+COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
+COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 
-COPY --from=build /app/dist ./dist/
+# Copy application files
+COPY . .
 
-# Create logs directory with proper permissions for OpenShift
-RUN mkdir -p /app/dist/src/logs && \
-    chmod -R 777 /app/dist/src/logs
+# Expose the port
+EXPOSE 3000
 
-
-EXPOSE 8080
-
-CMD ["node", "dist/src/index.js"]
+# Run migrations and start the application
+CMD ["sh", "-c", "npx prisma migrate deploy && npm start"]
