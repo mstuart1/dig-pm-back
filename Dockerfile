@@ -34,7 +34,7 @@ COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 COPY . .
 
 # Expose the port
-EXPOSE 3000
+EXPOSE 8080
 
 # Run migrations and start the application
 CMD ["sh", "-c", "npx prisma migrate deploy && npm start"]
