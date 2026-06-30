@@ -6,17 +6,29 @@ export const getPersons: RequestHandler = async (req: Request, res) => {
   let queryParams = req.query;
   let query = {} as any;
   let where = {} as any;
-  let include = {efforts: {include: {project: true}}, projects: true} as any;
+  
+  // Build effort filter conditions
+  let effortWhereConditions: any = { percentEffort: { not: 0 } };
+  if (queryParams.projectId) {
+    effortWhereConditions.projectId = queryParams.projectId;
+  }
+  
+  let include = {
+    efforts: { 
+      include: { project: true }, 
+      where: effortWhereConditions 
+    }
+  } as any;
+  
   if (queryParams.program) {
     where = { program: queryParams.program }
   }
-  if (queryParams.projectId){
-    include.projects = { where: { id: queryParams.projectId } }
-    include.efforts = { include: { project: true }, where: { projectId: queryParams.projectId } }
-  }
   
-    if (Object.keys(where).length > 0) query.where = where;
-    if (Object.keys(include).length > 0) query.include = include;
+  // Only return persons who have at least one effort matching our conditions
+  where.efforts = { some: effortWhereConditions };
+  
+  if (Object.keys(where).length > 0) query.where = where;
+  if (Object.keys(include).length > 0) query.include = include;
 
   const persons = await PersonService.getAllPersons(query)
   res.status(200).json(persons)
