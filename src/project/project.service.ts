@@ -7,7 +7,7 @@ export const getAllProjects = async () => {
 export const getProjectById = async (projectId: string) => {
   return await prisma.project.findUnique({
     where: { id: projectId },
-    include: {persons: {include: {efforts: true}} },
+    include: {efforts: {include: {employee: true}}},
   });
 };
 
