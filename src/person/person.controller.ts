@@ -12,32 +12,37 @@ export const getPersons: RequestHandler = async (req: Request, res) => {
     effortWhereConditions = { percentEffort: { not: 0 } };
     effortWhereConditions.projectId = queryParams.projectId;
   }
-  
+
   let include = {
-    efforts: { 
-      include: { project: true }, 
+    efforts: {
+      include: { project: true },
     }
   } as any;
+
+  if (Object.keys(effortWhereConditions).length > 0) include.efforts = { where: effortWhereConditions };
   
   if (queryParams.program) {
     where = { program: queryParams.program }
   }
-  
-  
-  
+
+  if (Object.keys(effortWhereConditions).length > 0) where.efforts = { some: effortWhereConditions };
   if (Object.keys(where).length > 0) query.where = where;
   if (Object.keys(include).length > 0) query.include = include;
-  if (Object.keys( effortWhereConditions ).length > 0) query.include.efforts = { where: effortWhereConditions };
   // Only return persons who have at least one effort matching our conditions
-  if (Object.keys( effortWhereConditions ).length > 0) query.where.efforts = { some: effortWhereConditions };
 
   console.log('query:', query);
+  try {
+    const persons = await PersonService.getAllPersons(query)
+    res.status(200).json(persons)
+  } catch (error) {
+    console.error('Error in getPersons:', error);
+    res.status(500).json({ message: 'Internal server error' });
+    return;
+  }
 
-  const persons = await PersonService.getAllPersons(query)
-  res.status(200).json(persons)
 }
 
- 
+
 export const getPersonById: RequestHandler<{ personId: string }> = async (req, res) => {
   const { personId } = req.params
   const person = await PersonService.getPersonById(personId)
