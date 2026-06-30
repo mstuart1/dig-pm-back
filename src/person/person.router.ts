@@ -9,6 +9,7 @@ const router = Router()
 router.get('/', PersonController.getPersons)
   .post('/', validateSchema(CreateSchema), PersonController.createPerson)
   .put('/', validateSchema(UpdateSchema), PersonController.updatePerson)
+  .get('/', PersonController.getPersons)
   .get('/:personId', PersonController.getPersonById)
 
 export default router;

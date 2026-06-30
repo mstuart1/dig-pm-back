@@ -5,10 +5,14 @@ import type { Request, RequestHandler } from 'express'
 export const getPersons: RequestHandler = async (req: Request, res) => {
   let queryParams = req.query;
   let query = {} as any;
-  let where = {}
-  let include = {efforts: {include: {project: true}}, projects: true}
+  let where = {} as any;
+  let include = {efforts: {include: {project: true}}, projects: true} as any;
   if (queryParams.program) {
     where = { program: queryParams.program }
+  }
+  if (queryParams.projectId){
+    include.projects = { where: { id: queryParams.projectId } }
+    include.efforts = { include: { project: true }, where: { projectId: queryParams.projectId } }
   }
   
     if (Object.keys(where).length > 0) query.where = where;
