@@ -6,17 +6,16 @@ export const getPersons: RequestHandler = async (req: Request, res) => {
   let queryParams = req.query;
   let query = {} as any;
   let where = {} as any;
+  let effortWhereConditions = {} as any;
   
-  // Build effort filter conditions
-  let effortWhereConditions: any = { percentEffort: { not: 0 } };
   if (queryParams.projectId) {
+    effortWhereConditions = { percentEffort: { not: 0 } };
     effortWhereConditions.projectId = queryParams.projectId;
   }
   
   let include = {
     efforts: { 
       include: { project: true }, 
-      where: effortWhereConditions 
     }
   } as any;
   
@@ -24,11 +23,15 @@ export const getPersons: RequestHandler = async (req: Request, res) => {
     where = { program: queryParams.program }
   }
   
-  // Only return persons who have at least one effort matching our conditions
-  where.efforts = { some: effortWhereConditions };
+  
   
   if (Object.keys(where).length > 0) query.where = where;
   if (Object.keys(include).length > 0) query.include = include;
+  if (Object.keys( effortWhereConditions ).length > 0) query.include.efforts = { where: effortWhereConditions };
+  // Only return persons who have at least one effort matching our conditions
+  if (Object.keys( effortWhereConditions ).length > 0) query.where.efforts = { some: effortWhereConditions };
+
+  console.log('query:', query);
 
   const persons = await PersonService.getAllPersons(query)
   res.status(200).json(persons)
