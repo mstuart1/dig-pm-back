@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Project {
-  id                  String  @id @unique @default(uuid())
+  id                  String         @id @unique @default(uuid())
   lastPiReportDate    String?
   lastPiReportBalance Float?
   title               String
@@ -22,8 +22,9 @@ model Project {
   projectAccount      String
   taskNumber          String
   indirectRate        Float?
-  softEndDate         Boolean @default(false) // indicates if the end date is flexible and can be extended
+  softEndDate         Boolean        @default(false) // indicates if the end date is flexible and can be extended
   program             Program
+  spendoutStatus      SpendoutStatus @default(OVERBUDGET) // indicates if the project is under, over, or on budget
 
   // Relationships
   efforts Effort[]
@@ -44,9 +45,9 @@ model Person {
 }
 
 model Effort {
-  id              String @id @unique @default(uuid())
+  id            String @id @unique @default(uuid())
   payrollDate   String
-  percentEffort   Float?
+  percentEffort Float?
 
   // Relationships
   employee   Person  @relation(fields: [employeeId], references: [id])
@@ -62,4 +63,10 @@ enum Program {
   EACPLANNING
   CCRC
   PUBLICHEALTH
+}
+
+enum SpendoutStatus {
+  UNDERBUDGET
+  OVERBUDGET
+  ONBUDGET
 }
