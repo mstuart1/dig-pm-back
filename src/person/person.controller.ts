@@ -19,7 +19,7 @@ export const getPersons: RequestHandler = async (req: Request, res) => {
     }
   } as any;
 
-  if (Object.keys(effortWhereConditions).length > 0) include.efforts = { where: effortWhereConditions };
+  if (Object.keys(effortWhereConditions).length > 0) include.efforts = { ...include.efforts, where: effortWhereConditions };
   
   if (queryParams.program) {
     where = { program: queryParams.program }
@@ -27,10 +27,11 @@ export const getPersons: RequestHandler = async (req: Request, res) => {
 
   if (Object.keys(effortWhereConditions).length > 0) where.efforts = { some: effortWhereConditions };
   if (Object.keys(where).length > 0) query.where = where;
+
   if (Object.keys(include).length > 0) query.include = include;
   // Only return persons who have at least one effort matching our conditions
 
-  console.log('query:', query);
+  console.log('query:', JSON.stringify(query, null, 2));
   try {
     const persons = await PersonService.getAllPersons(query)
     res.status(200).json(persons)
