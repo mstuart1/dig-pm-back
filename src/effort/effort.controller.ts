@@ -8,12 +8,6 @@ export const getEffortsByPersonId: RequestHandler<GetByPersonSchema> = async (re
   res.status(200).json(efforts)
 }
 
-export const createEffort: RequestHandler<{}, {}, CreateSchema> = async (req, res) => {
-  const effortData = req.body
-  const newEffort = await EffortService.createEffort(effortData)
-  res.status(201).json(newEffort)
-}
-
 export const createBulkEffort: RequestHandler<{}, {}, CreateSchema[]> = async (req, res) => {
   const effortDataArray = req.body
   // for each effortData in effortDataArray, ensure that it is not a duplicate of an existing effort for the same person, project, and payrollDate
@@ -24,7 +18,14 @@ export const createBulkEffort: RequestHandler<{}, {}, CreateSchema[]> = async (r
       effort.payrollDate === effortData.payrollDate
     )
     if (duplicateEffort) {
-   console.log(`skipping duplicate effort for employeeId ${effortData.employeeId}, projectId ${effortData.projectId}, payrollDate ${effortData.payrollDate}`)
+      if (duplicateEffort.percentEffort === effortData.percentEffort) {
+        // If the percentEffort is the same, skip this effortData
+        continue
+      } else {
+        // If the percentEffort is different, update the existing effort instead of creating a new one
+        await EffortService.updateEffort(duplicateEffort.id, { percentEffort: effortData.percentEffort })
+        continue
+      }
     }
   }
   const newEfforts = await EffortService.createBulkEffort(effortDataArray)
@@ -36,6 +37,13 @@ export const updateEffort: RequestHandler<{}, {}, UpdateSchema> = async (req, re
   if (!effortData.id) {
     return res.status(400).json({ message: 'Effort ID is required for update.' })
   }
-  const updatedEffort = await EffortService.updateEffort(effortData.id, effortData)
-  res.status(200).json(updatedEffort)
+  if (effortData.percentEffort === 0){
+    // Handle the case where percentEffort is 0, e.g., delete the effort or set it to a default value
+    await EffortService.deleteEffort(effortData.id)
+    return res.status(200).json({ message: 'Effort deleted due to 0 percent effort.' })
+  } else {
+    const updatedEffort = await EffortService.updateEffort(effortData.id, effortData)
+    res.status(200).json(updatedEffort)
+
+  }
 }

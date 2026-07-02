@@ -28,3 +28,9 @@ export const updateEffort = async (effortId: string, effortData: any) => {
     include: { project: true, employee: true },
   });
 };
+
+export const deleteEffort = async (effortId: string) => {
+  return await prisma.effort.delete({
+    where: { id: effortId },
+  });
+};
