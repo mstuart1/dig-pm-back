@@ -3,6 +3,7 @@ import * as PersonService from './person.service.js'
 import type { Request, RequestHandler } from 'express'
 
 export const getPersons: RequestHandler = async (req: Request, res) => {
+  console.log('getPersons');
   let queryParams = req.query;
   let query = {} as any;
   let where = {} as any;
@@ -31,7 +32,7 @@ export const getPersons: RequestHandler = async (req: Request, res) => {
   if (Object.keys(include).length > 0) query.include = include;
   // Only return persons who have at least one effort matching our conditions
 
-  console.log('query:', JSON.stringify(query, null, 2));
+  // console.log('query:', JSON.stringify(query, null, 2));
   try {
     const persons = await PersonService.getAllPersons(query)
     res.status(200).json(persons)
