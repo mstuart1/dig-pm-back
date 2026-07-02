@@ -9,7 +9,9 @@ export const getEffortsByPersonId: RequestHandler<GetByPersonSchema> = async (re
 }
 
 export const createBulkEffort: RequestHandler<{}, {}, CreateSchema[]> = async (req, res) => {
-  const effortDataArray = req.body
+  console.log('createBulkEffort');
+  try {
+    const effortDataArray = req.body
   // for each effortData in effortDataArray, ensure that it is not a duplicate of an existing effort for the same person, project, and payrollDate
   for (const effortData of effortDataArray) {
     const existingEfforts = await EffortService.getEffortsByPersonId(effortData.employeeId)
@@ -19,7 +21,7 @@ export const createBulkEffort: RequestHandler<{}, {}, CreateSchema[]> = async (r
     )
     if (duplicateEffort) {
       if (duplicateEffort.percentEffort === effortData.percentEffort) {
-        // If the percentEffort is the same, skip this effortData
+        console.log(`skipping duplicate effort`);
         continue
       } else {
         // If the percentEffort is different, update the existing effort instead of creating a new one
@@ -30,6 +32,12 @@ export const createBulkEffort: RequestHandler<{}, {}, CreateSchema[]> = async (r
   }
   const newEfforts = await EffortService.createBulkEffort(effortDataArray)
   res.status(201).json(newEfforts)
+  } catch (error) {
+    console.error('Error in createBulkEffort:', error);
+    res.status(500).json({ message: 'Internal server error' });
+    return;
+  }
+  
 }   
 
 export const updateEffort: RequestHandler<{}, {}, UpdateSchema> = async (req, res) => {
